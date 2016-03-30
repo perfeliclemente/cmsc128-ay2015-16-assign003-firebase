@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id='addRecipe'>
+    <input type='text' id='recipeName' placeholder='Recipe Name'> 
+    <input type='text' id='recipeClass' placeholder='Classification'>
+    <input type='text' id='recipeText' placeholder='Description'>
+    <button id='addButton'>ADD RECIPE</button>
+    </div>
+
+    <div id='displayRecipe'>
+    </div>
+
+    <script>
+      var myDataRef = new Firebase('https://recipe-chef-asia.firebaseio.com');
+      
+      $('#addButton').on('click', function(){
+        alert("asdasd");
+        var recipe_name = $('#recipeName').val();
+        var recipe_class = $('#recipeClass').val();
+        var recipe_desc = $('#recipeText').val();
+        myDataRef.push({name: recipe_name, r_class: recipe_class, desc: recipe_desc});
+        $('#addRecipe').val('');
+      });
+
+      myDataRef.on('child_added', function(snapshot) {
+        var recipe = snapshot.val();
+        displayRecipe(recipe.name, recipe.r_class, recipe.desc);
+      });
+
+      function displayRecipe(name, r_class, desc) {
+        $('#displayRecipe').append(name);
+        $('#displayRecipe').append(r_class);
+        $('#displayRecipe').append(desc);
+        console.log(name);
+      };
+
+
+    </script>
+
+  </body>
+</html>
