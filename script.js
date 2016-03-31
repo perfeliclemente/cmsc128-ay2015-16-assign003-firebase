@@ -5,7 +5,7 @@ $('#addButton').on('click', function(){
   var recipe_class = $('#recipeClass').val();
   var recipe_desc = $('#recipeText').val();
   
-  
+
 
   myDataRef.push({name: recipe_name, r_class: recipe_class, desc: recipe_desc});
     $('#recipeName').val('');
@@ -23,7 +23,7 @@ function displayRecipe(name, r_class, desc) {
   var html = '';
   
   html += '<li>';
-    html += '<div class="collapsible-header active"><i class="material-icons">filter_drama</i><b> Recipe Name: </b>'+name+'</div>';
+    html += '<div class="collapsible-header active"><i class="material-icons">view_list</i><b> Recipe Name: </b>'+name+'</div>';
     html +=  '<div class="collapsible-body"><p> <b>Classification: </b>'+ r_class +'</p><p> <b>Description: </b>'+ desc +'</p></div>';
     html += '</li>';
 
